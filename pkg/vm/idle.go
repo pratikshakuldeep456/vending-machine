@@ -14,7 +14,7 @@ func (is *IdleState) SelectItem(itemName string, vm *VendingMachine) error {
 	inventory := vm.Items
 
 	i, exists := inventory[itemName]
-	if !exists || i.Quantity <= 0 {
+	if !exists {
 
 		return fmt.Errorf("item %s is not available", itemName)
 	}

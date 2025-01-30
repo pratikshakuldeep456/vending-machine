@@ -26,7 +26,8 @@ func (ds *DispenseState) DispenseItem(vm *VendingMachine) error {
 	if !val || key.Quantity <= 0 {
 		return errors.New("item is out of stock")
 	}
-	key.Quantity--
+
+	vm.Items[ds.Item.Name].Quantity--
 
 	fmt.Printf("Dispensed: %s. Remaining stock: %d\n", ds.Item.Name, key.Quantity)
 	vm.SetState(&IdleState{})
